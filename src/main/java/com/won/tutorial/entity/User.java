@@ -10,7 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
-@Table(name = "USERS")
+@Table(name = "`user`")
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
