@@ -30,7 +30,7 @@
     sudo mkswap /swapfile
     ```
 
-4. swap 공강에 swapfile추가하여 즉사 사용 가능케 하기
+4. swap 공간에 swapfile추가하여 즉사 사용 가능케 하기
     ```
     sudo swapon /swapfile
     ```
