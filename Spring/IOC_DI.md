@@ -50,7 +50,7 @@ ApplicationContext 인터페이스를 통해 제공되는 스프링 컨테이너
 
 - 과거에는 xml로 설정을 따로 관리하여 등록(불편)
 - 현재는 annotation 기반으로 Bean 등록
-    - @Bean, @Controller, @Service
+    - `@Bean`, `@Controller`, `@Service`
 
 ### Bean 등록 시 정보
 
@@ -69,8 +69,8 @@ ApplicationContext 인터페이스를 통해 제공되는 스프링 컨테이너
 - lifecycle callback
     - Bean을 생성하고 초기화하고 파괴하는 등 특정 시점에 호출되도록 정의된 함수
 - 주로 많이 사용되는 콜백
-    - @PostConstruct : 빈 생성 시점에 필요한 작업을 수행
-    - @PreDestroy : 빈 파괴(주로 어플리케이션 종료) 시점에 필요한 작업을 수행
+    - `@PostConstruct` : 빈 생성 시점에 필요한 작업을 수행
+    - `@PreDestroy` : 빈 파괴(주로 어플리케이션 종료) 시점에 필요한 작업을 수행
 
 ---
 
