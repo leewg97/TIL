@@ -244,6 +244,44 @@ Stream<T> sorted();
 Stream<T> sorted(Comparator<? super T> comparator);
 ```
 
+- **예제**
+    
+    ```java
+    LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+    Order order1 = new Order()
+            .setId(1001L)
+            .setStatus(CREATED)
+            .setCreatedByUserId(101L)
+            .setCreatedAt(now.minusHours(4));
+    Order order2 = new Order()
+            .setId(1002L)
+            .setStatus(ERROR)
+            .setCreatedByUserId(103L)
+            .setCreatedAt(now.minusHours(40));
+    Order order3 = new Order()
+            .setId(1003L)
+            .setStatus(PROCESSED)
+            .setCreatedByUserId(104L)
+            .setCreatedAt(now.minusHours(36));
+    Order order4 = new Order()
+            .setId(1004L)
+            .setStatus(ERROR)
+            .setCreatedByUserId(102L)
+            .setCreatedAt(now.minusHours(15));
+    Order order5 = new Order()
+            .setId(1005L)
+            .setStatus(IN_PROGRESS)
+            .setCreatedByUserId(101L)
+            .setCreatedAt(now.minusHours(10));
+    List<Order> orders = Arrays.asList(order1,  order2, order3, order4, order5);
+    
+    // TODO : sort the orders based on createdAt
+    List<Order> sortedOrdersByCreatedAt = orders.stream()
+            .sorted(Comparator.comparing(Order::getCreatedAt))
+            .collect(Collectors.toList());
+    System.out.println(sortedOrdersByCreatedAt);
+    ```
+
 ## Distinct
 
 - 중복되는 데이터가 제거된 stream을 리턴
@@ -252,6 +290,52 @@ Stream<T> sorted(Comparator<? super T> comparator);
 Stream<T> distinct();
 ```
 
+- **예제**
+    
+    ```java
+    List<Integer> integers = Arrays.asList(3, -5, 4, -5, 7, 3, 9, -10);
+    List<Integer> distinctIntegers = integers.stream()
+            .distinct()
+            .collect(Collectors.toList());
+    System.out.println(distinctIntegers);
+    
+    LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+    Order order1 = new Order()
+            .setId(1001L)
+            .setStatus(CREATED)
+            .setCreatedByUserId(101L)
+            .setCreatedAt(now.minusHours(4));
+    Order order2 = new Order()
+            .setId(1002L)
+            .setStatus(ERROR)
+            .setCreatedByUserId(103L)
+            .setCreatedAt(now.minusHours(40));
+    Order order3 = new Order()
+            .setId(1003L)
+            .setStatus(PROCESSED)
+            .setCreatedByUserId(104L)
+            .setCreatedAt(now.minusHours(36));
+    Order order4 = new Order()
+            .setId(1004L)
+            .setStatus(ERROR)
+            .setCreatedByUserId(102L)
+            .setCreatedAt(now.minusHours(15));
+    Order order5 = new Order()
+            .setId(1005L)
+            .setStatus(IN_PROGRESS)
+            .setCreatedByUserId(101L)
+            .setCreatedAt(now.minusHours(10));
+    List<Order> orders = Arrays.asList(order1,  order2, order3, order4, order5);
+    
+    // TODO: created a sorted list of unique CreatedByUserIds from the orders
+    List<Long> userIds = orders.stream()
+            .map(Order::getCreatedByUserId)
+            .distinct()
+            .sorted()
+            .collect(Collectors.toList());
+    System.out.println(userIds);
+    ```
+
 ## FlatMap
 
 - Map + Flatten
@@ -259,8 +343,52 @@ Stream<T> distinct();
 
 ```java
 <R> Stream<R> flatMap(
-Function<? super T, ? extends Stream<? extends R>> mapper);
+Function<? super T, 
+? extends Stream<? extends R>> mapper);
 ```
+
+- **예제**
+    
+    ```java
+    Order order1 = new Order()
+            .setId(1001L)
+            .setOrderLines(Arrays.asList(
+                    new OrderLine()
+                            .setId(10001L)
+                            .setType(PURCHASE)
+                            .setAmount(BigDecimal.valueOf(5000)),
+                    new OrderLine()
+                            .setId(10002L)
+                            .setType(PURCHASE)
+                            .setAmount(BigDecimal.valueOf(4000))
+            ));
+    Order order2 = new Order()
+            .setId(1002L)
+            .setOrderLines(Arrays.asList(
+                    new OrderLine()
+                            .setId(10003L)
+                            .setType(PURCHASE)
+                            .setAmount(BigDecimal.valueOf(2000)),
+                    new OrderLine()
+                            .setId(10004L)
+                            .setType(DISCOUNT)
+                            .setAmount(BigDecimal.valueOf(-1000))
+            ));
+    Order order3 = new Order()
+            .setId(1003L)
+            .setOrderLines(Arrays.asList(
+                    new OrderLine()
+                            .setId(10005L)
+                            .setType(PURCHASE)
+                            .setAmount(BigDecimal.valueOf(2000))
+            ));
+    List<Order> orders = Arrays.asList(order1, order2, order3);
+    List<OrderLine> orderLines = orders.stream()    // Stream<Order>
+            .map(Order::getOrderLines)              // Stream<List<OrderLine>>
+            .flatMap(List::stream)                  // Stream<OrderLine>
+            .collect(Collectors.toList());
+    orderLines.forEach(System.out::println);
+    ```
 
 ### Summary
 
@@ -268,8 +396,8 @@ Function<? super T, ? extends Stream<? extends R>> mapper);
 
 - 스트림은 데이터의 흐름
 - 여러 개의 중간 처리를 연결할 수 있음
-    - Filter
-    - Map
-    - Sorted
-    - Distinct
-    - FlatMap
+    - Filter : Stream에 있는 데이터 중 어떠한 조건을 만족하는 데이터만 걸러내주는 역할
+    - Map : Stream안에 있는 데이터에 어떠한 처리를 하여 다른 형태로 변형을 하는 역할
+    - Sorted :  Stream안에 있는 데이터 정렬
+    - Distinct : Stream안에 중복된 데이터 제거
+    - FlatMap : Map처럼 데이터에 어떠한 처리를 함과 동시에 결과로 나오는 Stream을 납작하게 만들어 그냥 Stream이 될 수 있게 해줌
