@@ -28,8 +28,7 @@ public class Chapter5_3 {
         };
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < inputs.length; i++) {
-            String[] input = inputs[i];
+        for (String[] input : inputs) {
             String carType = input[0];
             String carName = input[1];
             String carBrand = input[2];
