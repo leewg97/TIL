@@ -1,4 +1,4 @@
-package chapter4.model;
+package functionalInterface.model;
 
 public class User {
 

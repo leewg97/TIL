@@ -1,6 +1,6 @@
-package chapter4;
+package functionalInterface;
 
-import chapter4.model.User;
+import functionalInterface.model.User;
 
 import java.util.ArrayList;
 import java.util.Collections;

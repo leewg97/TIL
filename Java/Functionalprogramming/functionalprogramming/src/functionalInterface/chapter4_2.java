@@ -1,4 +1,4 @@
-package chapter4;
+package functionalInterface;
 
 import java.util.Arrays;
 import java.util.List;
