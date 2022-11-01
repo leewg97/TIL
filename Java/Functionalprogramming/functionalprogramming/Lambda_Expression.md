@@ -1,7 +1,5 @@
 ## Lambda Expression
 
----
-
 ### Function Interface
 
 ```java
