@@ -1,4 +1,4 @@
-package chapter3;
+package lambdaExpression;
 
 import java.util.function.Function;
 
