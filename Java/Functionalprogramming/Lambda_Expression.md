@@ -7,7 +7,7 @@
 ```java
 @FunctionalInterface
 public interface Function<T, R> {
-		R apply(T t);
+    R apply(T t);
 }
 ```
 
@@ -23,7 +23,7 @@ public interface Function<T, R> {
 
 ```java
 Function<Integer, Integer> myAdder = (Integer x) -> {
-		return x + 10;
+    return x + 10;
 }
 
 Function<Integer, Integer> myAdder = x -> x + 10;
@@ -38,11 +38,11 @@ Function<Integer, Integer> myAdder = x -> x + 10;
 ```java
 @FunctionalInterface
 public interface BiFunction<T, U, R> {
-		R apply(T t, U u);
+    R apply(T t, U u);
 }
 
 BiFunction<Integer, Integer, Integer> add = (x, y) -> x + y;
-        int result = add.apply(3, 6);
+    int result = add.apply(3, 6);
 ```
 
 ### Functional Interface - 함수의 뼈대
@@ -57,16 +57,16 @@ BiFunction<Integer, Integer, Integer> add = (x, y) -> x + y;
 ```java
 @FunctionalInterface
 public interface Function<T, R> {
-		R apply(T t);
-		default <V> Function<V, R> compose(Function<? super V, ? extends T> before) {
-		…
-		}
-		default <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
-		…
-		}
-		static <T> Function<T, T> identity() {
-		…
-		}
+    R apply(T t);
+    default <V> Function<V, R> compose(Function<? super V, ? extends T> before) {
+    …
+    }
+    default <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
+    …
+    }
+    static <T> Function<T, T> identity() {
+    …
+    }
 }
 
 @FunctionalInterface
@@ -75,7 +75,7 @@ public interface TriFunction<T, U, V, R> {
 }
 
 TriFunction<Integer, Integer, Integer, Integer> addThreeNumbers = (x, y, z) -> x + y + z;
-        Integer apply = addThreeNumbers.apply(3, 5, 6);
+    Integer apply = addThreeNumbers.apply(3, 5, 6);
 ```
 
 ### Summary
