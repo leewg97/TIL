@@ -42,7 +42,7 @@ public interface BiFunction<T, U, R> {
 }
 
 BiFunction<Integer, Integer, Integer> add = (x, y) -> x + y;
-    int result = add.apply(3, 6);
+Integer result = add.apply(3, 6);
 ```
 
 ### Functional Interface - 함수의 뼈대
@@ -75,7 +75,7 @@ public interface TriFunction<T, U, V, R> {
 }
 
 TriFunction<Integer, Integer, Integer, Integer> addThreeNumbers = (x, y, z) -> x + y + z;
-    Integer apply = addThreeNumbers.apply(3, 5, 6);
+Integer apply = addThreeNumbers.apply(3, 5, 6);
 ```
 
 ### Summary
