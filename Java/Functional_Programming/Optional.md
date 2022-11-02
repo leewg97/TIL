@@ -39,9 +39,6 @@ public <U> Optional<U> flatMap(Function<? super T, ? extends Optional<? extends 
 - flatMap : mapper의 리턴 값이 또 다른 Optional이라면 한 단계의 Optional이 되도록 납작하게 해줌
 
 ### Summary
-
----
-
 - Optional은 null일 수도, 아닐 수도 있는 오브젝트를 담을 때 사용
 - Optional를 생성하고 추출하고 변환하는 operator들
     - of / ofNullable / empty
