@@ -1,6 +1,6 @@
-package lambdaExpression;
+package lambda_Expression;
 
-import lambdaExpression.util.TriFunction;
+import lambda_Expression.util.TriFunction;
 
 public class chapter3_3 {
 

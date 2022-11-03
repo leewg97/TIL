@@ -1,6 +1,6 @@
-package functionalInterface;
+package functional_Interface;
 
-import functionalInterface.model.User;
+import functional_Interface.model.User;
 
 import java.util.ArrayList;
 import java.util.Collections;

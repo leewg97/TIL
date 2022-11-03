@@ -1,4 +1,4 @@
-package lambdaExpression;
+package lambda_Expression;
 
 import java.util.function.BiFunction;
 
