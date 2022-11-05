@@ -23,18 +23,18 @@
 
 - Spring Batch가 제공하는 Core와 Infrastructure를 활용해 Application을 구현한다
 
-    `Application Layer`
+`Application Layer`
 
   - 사용자(=우리) 코드와 구성
   - 비즈니스, 서비스 로직
   - Core, Infrastructure를 이용해 배치의 기능을 만듬
 
-    `Core Layer`
+ `Core Layer`
 
   - 배치 작업을 시작하고 제어하는데 필수적 클래스
   - Job, Step, JobLauncher
 
-    `Infrastructure Layer`
+`Infrastructure Layer`
 
   - 외부와 상호작용
   - ItemReader, ItemProcessor, ItemWriter
