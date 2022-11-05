@@ -23,18 +23,45 @@
 
 - Spring Batch가 제공하는 Core와 Infrastructure를 활용해 Application을 구현한다
 
-**Application Layer**
+    `Application Layer`
 
-- 사용자(=우리) 코드와 구성
-- 비즈니스, 서비스 로직
-- Core, Infrastructure를 이용해 배치의 기능을 만듬
+  - 사용자(=우리) 코드와 구성
+  - 비즈니스, 서비스 로직
+  - Core, Infrastructure를 이용해 배치의 기능을 만듬
 
-**Core Layer**
+    `Core Layer`
 
-- 배치 작업을 시작하고 제어하는데 필수적 클래스
-- Job, Step, JobLauncher
+  - 배치 작업을 시작하고 제어하는데 필수적 클래스
+  - Job, Step, JobLauncher
 
-**Infrastructure Layer**
+    `Infrastructure Layer`
 
-- 외부와 상호작용
-- ItemReader, ItemProcessor, ItemWriter
+  - 외부와 상호작용
+  - ItemReader, ItemProcessor, ItemWriter
+
+## Batch 실행 방식
+
+### OS 스케줄러
+
+- 한 머신 내부에서 os의 기능을 사용하여 os 스케줄러에서 batch 프로그램을 실행하는 것
+- Linux crontab
+- 실무에서는 사용하지 않는다
+
+### Quartz Scheduler
+
+- Quartz + Spring Batch 프레임워크를 함께 사용해 어플리케이션을 개발한다.
+    - 어플리케이션 내부에서 스케줄링하므로 Batch 실행이 빠르다.
+    - 스케줄링 데이터가 DB에 저장되어 Admin을 따로 만들어야 한다.
+
+### CI Tool 이용
+
+Jenkins
+
+- 마스터에서 슬레이브로 명령을 전달해 배치 프로그램을 실행시킨다
+- 젠킨스에서 지원하는 스케줄링 기능을 통해 배치 프로그램을 실행시킬 수 있다.
+
+### Spring Cloud Data Flow
+
+- Spring Cloud Data Flow를 활용해 잡을 실행시킨다.
+    - Kubernetes 클러스터를 구축해야 한다.
+    - Admin이 제공되고, 잡의 실행을 연결할 수 있는 등 다양한 기능을 제공한다.
