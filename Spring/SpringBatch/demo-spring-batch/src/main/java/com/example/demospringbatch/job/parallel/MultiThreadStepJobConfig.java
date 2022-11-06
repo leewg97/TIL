@@ -20,6 +20,8 @@ import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,19 +44,27 @@ public class MultiThreadStepJobConfig {
                 .build();
     }
 
+     // 같이 읽는 데이터가 lock 이 걸려 있거나, 동시에 처리할 수 없는 상황이면 MultiThreadStep 을 적용해도 성능 향상 X
     @JobScope
     @Bean
     public Step multiThreadStep(
             FlatFileItemReader<AmountDto> amountFileItemReader,
             ItemProcessor<AmountDto, AmountDto> amountFileItemProcessor,
-            FlatFileItemWriter<AmountDto> amountFileItemWriter
+            FlatFileItemWriter<AmountDto> amountFileItemWriter,
+            TaskExecutor taskExecutor
     ) {
         return stepBuilderFactory.get("multiThreadStep")
                 .<AmountDto, AmountDto>chunk(10)
                 .reader(amountFileItemReader)
                 .processor(amountFileItemProcessor)
                 .writer(amountFileItemWriter)
+                .taskExecutor(taskExecutor)
                 .build();
+    }
+
+    @Bean
+    public TaskExecutor taskExecutor() {
+        return new SimpleAsyncTaskExecutor("spring-batch-task-executor");
     }
 
     @StepScope
@@ -72,6 +82,7 @@ public class MultiThreadStepJobConfig {
     @Bean
     public ItemProcessor<AmountDto, AmountDto> amountFileItemProcessor() {
         return item -> {
+            System.out.println(item + "\tThread = " + Thread.currentThread().getName());
             item.setAmount(item.getAmount() * 100);
             return item;
         };
