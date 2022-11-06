@@ -64,7 +64,9 @@ public class MultiThreadStepJobConfig {
 
     @Bean
     public TaskExecutor taskExecutor() {
-        return new SimpleAsyncTaskExecutor("spring-batch-task-executor");
+        SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor("spring-batch-task-executor");
+        taskExecutor.setConcurrencyLimit(4);
+        return taskExecutor;
     }
 
     @StepScope
