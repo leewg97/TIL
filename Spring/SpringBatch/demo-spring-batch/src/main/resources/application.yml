@@ -3,7 +3,7 @@ spring:
     active: local
   batch:
     job:
-      names: ${job.name:NONE}
+      names: ${job.name:NONE} # 파라미터로 넘겨준 job 만 실행될 수 있도록 하는 설정
 
 
 ---
