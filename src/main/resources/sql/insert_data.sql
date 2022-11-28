@@ -15,3 +15,11 @@ VALUES ('A1000000', '이준호', 'ACTIVE', '01011112222', NULL, '2022-11-01 00:0
        ('B1000011', '김준호', 'INACTIVE', '01088889999', NULL, '2022-11-01 00:00:00'),
        ('B2000000', '박재훈', 'ACTIVE', '01099990000', NULL, '2022-11-01 00:00:00'),
        ('B2000001', '김민수', 'ACTIVE', '01000001111', NULL, '2022-11-01 00:00:00');
+
+INSERT INTO user_group_mapping (user_group_id, user_id, user_group_name, description, created_at)
+VALUES ('IFBB', 'A1000000', 'ifbb', 'IFBB PRO MENS PHYSIQUE', '2022-11-01 00:00:00'),
+       ('IFBB', 'A1000001', 'ifbb', 'IFBB PRO MENS PHYSIQUE', '2022-11-01 00:00:00'),
+       ('IFBB', 'A1000002', 'ifbb', 'IFBB PRO CLASSIC PHYSIQUE', '2022-11-01 00:00:00'),
+       ('IFBB', 'B1000010', 'ifbb', 'IFBB PRO 212 BODYBUILDING', '2022-11-01 00:00:00'),
+       ('IFBB', 'B2000000', 'ifbb', 'IFBB PRO CLASSIC PHYSIQUE', '2022-11-01 00:00:00'),
+       ('IFBB', 'B2000001', 'ifbb', 'IFBB PRO MENS PHYSIQUE', '2022-11-01 00:00:00');

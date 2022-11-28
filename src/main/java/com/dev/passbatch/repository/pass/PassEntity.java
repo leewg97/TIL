@@ -1,7 +1,6 @@
-package com.dev.passbatch.domain;
+package com.dev.passbatch.repository.pass;
 
-import com.dev.passbatch.constant.BaseEntity;
-import com.dev.passbatch.constant.PassStatus;
+import com.dev.passbatch.repository.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 @ToString
 @Entity
 @Table(name = "pass")
-public class Pass extends BaseEntity {
+public class PassEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +23,7 @@ public class Pass extends BaseEntity {
 
     private String userId;
 
+    @Enumerated(EnumType.STRING)
     private PassStatus status;
 
     private Integer remainingCount;
