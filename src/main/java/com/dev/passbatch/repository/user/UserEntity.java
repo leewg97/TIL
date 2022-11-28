@@ -1,7 +1,6 @@
-package com.dev.passbatch.domain;
+package com.dev.passbatch.repository.user;
 
-import com.dev.passbatch.constant.BaseEntity;
-import com.dev.passbatch.constant.UserStatus;
+import com.dev.passbatch.repository.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "user")
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
     @Id
     private String userId;

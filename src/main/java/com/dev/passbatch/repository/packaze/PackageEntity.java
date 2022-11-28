@@ -1,6 +1,6 @@
-package com.dev.passbatch.domain;
+package com.dev.passbatch.repository.packaze;
 
-import com.dev.passbatch.constant.BaseEntity;
+import com.dev.passbatch.repository.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "package")
-public class Package extends BaseEntity {
+public class PackageEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,6 @@
-package com.dev.passbatch.domain;
+package com.dev.passbatch.repository.booking;
 
-import com.dev.passbatch.constant.BaseEntity;
-import com.dev.passbatch.constant.BookingStatus;
+import com.dev.passbatch.repository.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 @ToString
 @Entity
 @Table(name = "booking")
-public class Booking extends BaseEntity {
+public class BookingEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingSeq;
