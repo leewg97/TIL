@@ -1,4 +1,4 @@
-package com.dev.passbatch.constant;
+package com.dev.passbatch.repository;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
