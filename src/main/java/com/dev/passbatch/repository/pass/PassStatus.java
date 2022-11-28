@@ -1,4 +1,4 @@
-package com.dev.passbatch.constant;
+package com.dev.passbatch.repository.pass;
 
 public enum PassStatus {
 
