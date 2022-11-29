@@ -14,7 +14,11 @@ public class AddPassesJobConfig {
     private final StepBuilderFactory stepBuilderFactory;
     private final AddPassesTasklet addPassesTasklet;
 
-    public AddPassesJobConfig(JobBuilderFactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory, AddPassesTasklet addPassesTasklet) {
+    public AddPassesJobConfig(
+            JobBuilderFactory jobBuilderFactory,
+            StepBuilderFactory stepBuilderFactory,
+            AddPassesTasklet addPassesTasklet
+    ) {
         this.jobBuilderFactory = jobBuilderFactory;
         this.stepBuilderFactory = stepBuilderFactory;
         this.addPassesTasklet = addPassesTasklet;
