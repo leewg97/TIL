@@ -17,7 +17,7 @@ public class PassEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long passSeq;
+    private Integer passSeq;
 
     private Integer packageSeq;
 
