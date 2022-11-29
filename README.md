@@ -4,7 +4,7 @@ PT 이용권 관리 서비스 내 배치 repository <br>
 
 ## Environments
 * OpenJDK 17
-* Spring Boot 2.7.6 
+* Spring Boot 2.7.5 
 * Gradle 
 * MySQL (Docker)
 * JPA 
