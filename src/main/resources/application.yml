@@ -1,4 +1,10 @@
+server:
+  port: 8081
+
 spring:
+
+  application:
+    name: pass-batch
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -9,5 +15,11 @@ spring:
       maximum-pool-size: 20
 
   batch:
+    job:
+      enabled: false
     jdbc:
       initialize-schema: always
+
+kakaotalk:
+  host: https://kapi.kakao.com
+  token: TOKEN
