@@ -1,4 +1,0 @@
-### Send DELETE request with json body
-DELETE http://localhost:8080/developers/Mini
-Content-Type: application/json
-
