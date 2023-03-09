@@ -61,6 +61,6 @@ BaseException
 
 ```python
 class 예외(Exception):
-		def __init__(self):
-				super().__init__("error message")
+	def __init__(self):
+		super().__init__("error message")
 ```
