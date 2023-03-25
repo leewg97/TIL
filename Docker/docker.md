@@ -122,3 +122,15 @@ $ docker push [docker hub id]/[이미지 이름: 태그]
 ```
 docker-compose -f docker-compose-local.yml up
 ```
+
+### docker mariaDB 설정
+
+- 한글 깨짐 현상을 막기 위해 추가 설정이 필요
+- docker mariaDB 컨테이너 내에 `/etc/mysql/conf.d` 경로에 `.cnf` 설정 파일을 넣어주면 해당 내용 바탕으로 설정이 초기화
+
+## Docker Compose 환경변수 설정 방법
+
+- Docker compose에서 환경 변수 정보들을 분리하여 별도의 파일로 구성할 때 간편한 방법은 Compose 파일이 위치한 경로에 .env 파일을 구성
+- 작성한 .env 파일은 별다른 설정 없이 Docker Compose에 바로 반영
+- 비밀 정보가 코드에 노출되지 않도록 .gitignore에 .env파일 추가
+- 추후 암호화를 통해 더 높은 보안을 제공하는 오픈소스 HashiCorp Vault 고려
