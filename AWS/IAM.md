@@ -8,7 +8,7 @@
   * 루트 계정을 사용하여 작업하는 것은 보안상의 이유로 지양하는 것이 좋다.	
   * 때문에 루트 계정은 꼭 필요할 때만 사용하는 것이 올다.
 
-### IAM 구조 요소
+### IAM Policy 구조 요소
 **Consists of**
 * Version : Policy language version 으로 항상 "2012-10-17"을 포함한다. 
 * Id : An Identifier for the policy(Optional)
